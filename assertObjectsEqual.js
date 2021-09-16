@@ -1,12 +1,3 @@
-// assertEqual Function
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🛑 Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
-
 // eqArrays Function
 const eqArrays = function(array1, array2) {
   // Check to make sure the length is the same
@@ -20,9 +11,7 @@ const eqArrays = function(array1, array2) {
   return true;
 };
 
-// CHALLENGE
-// Returns true if both objects have identical keys with identical values.
-// Otherwise you get back a big fat false!
+// Import eqObjects Function
 const eqObjects = function(object1, object2) {
   const key1 = Object.keys(object1);
   const key2 = Object.keys(object2);
@@ -46,23 +35,25 @@ const eqObjects = function(object1, object2) {
   return true;
 };
 
+// CHALLENGE
+// Implement assertObjectsEqual to take 2 objects and console.log an appropriate message
+const assertObjectsEqual = function(actual, expected) {
+  // Add util library
+  const inspect = require('util').inspect;
+  // console.log(`Example label: ${inspect(actual)}`);
+  if (eqObjects(actual, expected)) {
+    console.log(`✅ Assertion Passed: ${inspect(actual)} === ${inspect(expected)}`);
+  } else {
+    console.log(`🛑 Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`);
+  }
+};
 
-// Test Code for Primitives
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
-eqObjects(ab, ba); // => true
-assertEqual(eqObjects(ab, ba), true);
-
-const abc = { a: "1", b: "2", c: "3" };
-eqObjects(ab, abc); // => false
-assertEqual(eqObjects(ab, abc), false);
-
-// Test Code for Arrays
+// Test Code
 const cd = { c: "1", d: ["2", 3] };
 const dc = { d: ["2", 3], c: "1" };
-eqObjects(cd, dc); // => true
-assertEqual(eqObjects(cd, dc), true);
+// eqObjects(cd, dc); // => true
+assertObjectsEqual(cd, dc);
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
-eqObjects(cd, cd2); // => false
-assertEqual(eqObjects(cd, cd2), false);
+// eqObjects(cd, cd2); // => false
+assertObjectsEqual(cd, cd2);
