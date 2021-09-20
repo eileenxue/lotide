@@ -1,23 +1,17 @@
-const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
 const middle = require('../middle');
 
-// Test code
-middle([1]) // => []
-console.log(middle([1]));
-middle([1, 2]) // => []
-console.log(middle([1, 2]));
+describe("#middle", () => {
+  it("returns [3] for [1, 2, 3, 4, 5]", () => {
+    assert.deepEqual(middle([1, 2, 3, 4, 5]), [3]);
+  });
 
-middle([1, 2, 3]) // => [2]
-console.log(middle([1, 2, 3]));
-middle([1, 2, 3, 4, 5]) // => [3]
-console.log(middle([1, 2, 3, 4, 5]));
+  it("returns [] for [1, 2]", () => {
+    assert.deepEqual(middle([1, 2]), []);
+  });
 
-middle([1, 2, 3, 4]) // => [2, 3]
-console.log(middle([1, 2, 3, 4]));
-middle([1, 2, 3, 4, 5, 6]) // => [3, 4]
-console.log(middle([1, 2, 3, 4, 5, 6]));
+  it("returns [4, 3] for [6, 5, 4, 3, 2, 1]", () => {
+    assert.deepEqual(middle([6, 5, 4, 3, 2, 1]), [4, 3]);
+  });
 
-// Test case scenario to check that array is still the same
-const middleArrayTest = [5, 4, 3, 2, 1];
-middle(middleArrayTest);
-assertArraysEqual(middleArrayTest, [5, 4, 3, 2, 1]); 
+});

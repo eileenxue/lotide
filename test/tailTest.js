@@ -1,24 +1,17 @@
 // Import functions
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const tail = require('../tail');
 
-// Word Array
-const words = ["Hello", "Lighthouse", "Labs"];
+describe('#tail', () => {
+  it("returns [2, 1] for [3, 2, 1]", () => {
+    assert.deepEqual(tail([3, 2, 1]), [2, 1]);
+  });
 
-// Test Case 1: Check the returned array elements
-const result = tail(words);
-assertEqual(result.length, 2); // ensure we get back two elements
-assertEqual(result[0], "Lighthouse"); // ensure first element is "Lighthouse"
-assertEqual(result[1], "Labs"); // ensure second element is "Labs"
+  it("returns 'Lighthouse', 'Labs' for ['Hello', 'Lighthouse', 'Labs']", () => {
+    assert.deepEqual(tail(["Hello", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
+  });
 
-// Test Case 2: Check to see that original array is not modified
-assertEqual(words.length, 3);
-
-
-// One element array
-const singleArray = ["Hello"];
-
-// Test cases
-const resultSingle = tail(singleArray);
-assertEqual(resultSingle.length, 0); // we should get back 0 elements
-assertEqual(resultSingle[0], undefined); // should be empty array or undefined?
+  it("returns [] for []", () => {
+    assert.deepEqual(tail([]), [])
+  });
+});
