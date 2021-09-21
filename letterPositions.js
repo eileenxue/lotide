@@ -22,16 +22,16 @@ const assertArraysEqual = function(array1, array2) {
 
 // CHALLENGE 
 // Get the indices in the string where the letter is found
-const letterPositions = function(sentence) {
+const letterPositions = function(string) {
   const results = {};
   // Loop through the sentence
-  for (let i = 0; i < sentence.length; i++) {
+  for (let i = 0; i < string.length; i++) {
     // Get the index of each letter and push to array?
-    if (sentence[i] !== " ") {
-      if (results[sentence[i]]){
-        results[sentence[i]].push(i);
+    if (string[i] !== " ") {
+      if (results[string[i]]){
+        results[string[i]].push(i);
       } else {
-        results[sentence[i]] = [i];
+        results[string[i]] = [i];
       }
     }
   }
